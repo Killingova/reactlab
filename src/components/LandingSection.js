@@ -3,40 +3,41 @@ import { Avatar, Heading, VStack, Text } from "@chakra-ui/react";
 import FullScreenSection from "./FullScreenSection";
 
 const greeting = "Hello, I am Pete!";
-const bio1 = "A passionate frontend developer";
-const bio2 = "Specialised in ⚛️ React & modern UI frameworks.";
+const bio1 = "A frontend developer";
+const bio2 = "specialised in React";
 
 const LandingSection = () => (
   <FullScreenSection
     justifyContent="center"
     alignItems="center"
     isDarkBackground
-    backgroundColor="#2A4365"
-    py={32} // Mehr Padding für bessere Zentrierung
+    backgroundColor="#1E3A5F" // Exakte Farbe aus dem Screenshot
+    py={32} // Mehr Padding für perfekte Zentrierung
   >
     <VStack spacing={6}>
-      {/* Avatar mit sanfterem Hover */}
+      {/* Avatar mit weißem Rand & Hover-Effekt */}
       <Avatar
         size="2xl"
         name="Pete"
         src="https://i.pravatar.cc/150?img=7"
+        border="4px solid white" // Weißer Rand für Kontrast
         shadow="lg"
         transition="transform 0.3s"
-        _hover={{ transform: "scale(1.1)" }}
+        _hover={{ transform: "scale(1.1)" }} // Sanfte Vergrößerung beim Hover
       />
 
-      {/* Begrüßung */}
-      <Heading as="h1" size="xl" color="whiteAlpha.900">
+      {/* Begrüßung kleiner & grauer */}
+      <Text fontSize="md" color="gray.300" fontWeight="bold">
         {greeting}
-      </Heading>
+      </Text>
 
-      {/* Kurzbeschreibung */}
-      <Text fontSize="lg" color="gray.300" textAlign="center">
+      {/* Hauptüberschrift größer & mittig */}
+      <Heading as="h1" size="2xl" color="white" textAlign="center">
         {bio1}
-      </Text>
-      <Text fontSize="lg" color="gray.300" textAlign="center">
+      </Heading>
+      <Heading as="h1" size="2xl" color="white" textAlign="center">
         {bio2}
-      </Text>
+      </Heading>
     </VStack>
   </FullScreenSection>
 );

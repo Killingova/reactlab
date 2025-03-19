@@ -36,7 +36,7 @@ const ContactMeSection = () => {
     validateOnChange: false,
     validateOnBlur: true,
     onSubmit: async (values, { resetForm }) => {
-      const apiResponse = await submit(values); // Warten auf API-Antwort
+      const apiResponse = await submit(values);
       
       if (apiResponse?.type === "success") {
         onOpen("success", `Thank you, ${values.firstName}! We will be in touch.`);
@@ -48,7 +48,7 @@ const ContactMeSection = () => {
   });
 
   return (
-    <Box as="section" id="contactme-section" p={10} backgroundColor="#512DA8">
+    <Box as="section" id="contactme-section" p={12} backgroundColor="#5A3EAE" minH="100vh">
       <VStack spacing={6} align="stretch" maxWidth="600px" margin="auto">
         {/* Titel */}
         <Heading as="h2" size="xl" color="white" textAlign="left">
@@ -56,59 +56,71 @@ const ContactMeSection = () => {
         </Heading>
 
         {/* Formular-Box */}
-        <Box backgroundColor="white" p={6} borderRadius="md" boxShadow="lg">
+        <Box backgroundColor="transparent" p={6} borderRadius="md">
           <form onSubmit={formik.handleSubmit}>
             <VStack spacing={4}>
               {/* Name Field */}
               <FormControl isInvalid={formik.touched.firstName && formik.errors.firstName} w="full">
-                <FormLabel htmlFor="firstName">Name</FormLabel>
+                <FormLabel htmlFor="firstName" color="white">Name</FormLabel>
                 <Input
                   id="firstName"
                   name="firstName"
                   {...formik.getFieldProps("firstName")}
-                  borderColor="gray.400"
+                  borderColor="whiteAlpha.700"
+                  background="transparent"
+                  color="white"
+                  _placeholder={{ color: "whiteAlpha.700" }}
                 />
                 <FormErrorMessage>{formik.errors.firstName}</FormErrorMessage>
               </FormControl>
 
               {/* Email Field */}
               <FormControl isInvalid={formik.touched.email && formik.errors.email} w="full">
-                <FormLabel htmlFor="email">Email Address</FormLabel>
+                <FormLabel htmlFor="email" color="white">Email Address</FormLabel>
                 <Input
                   id="email"
                   name="email"
                   type="email"
                   {...formik.getFieldProps("email")}
-                  borderColor="gray.400"
+                  borderColor="whiteAlpha.700"
+                  background="transparent"
+                  color="white"
+                  _placeholder={{ color: "whiteAlpha.700" }}
                 />
                 <FormErrorMessage>{formik.errors.email}</FormErrorMessage>
               </FormControl>
 
               {/* Type of Enquiry Field */}
               <FormControl isInvalid={formik.touched.type && formik.errors.type} w="full">
-                <FormLabel htmlFor="type">Type of enquiry</FormLabel>
+                <FormLabel htmlFor="type" color="white">Type of enquiry</FormLabel>
                 <Select
                   id="type"
                   name="type"
                   {...formik.getFieldProps("type")}
-                  borderColor="gray.400"
+                  borderColor="whiteAlpha.700"
+                  background="transparent"
+                  color="white"
+                  _placeholder={{ color: "whiteAlpha.700" }}
                 >
-                  <option value="hireMe">Freelance project proposal</option>
-                  <option value="openSource">Open source consultancy session</option>
-                  <option value="other">Other</option>
+                  <option value="hireMe" style={{ color: "black" }}>Freelance project proposal</option>
+                  <option value="openSource" style={{ color: "black" }}>Open source consultancy session</option>
+                  <option value="other" style={{ color: "black" }}>Other</option>
                 </Select>
                 <FormErrorMessage>{formik.errors.type}</FormErrorMessage>
               </FormControl>
 
               {/* Comment Field */}
               <FormControl isInvalid={formik.touched.comment && formik.errors.comment} w="full">
-                <FormLabel htmlFor="comment">Your message</FormLabel>
+                <FormLabel htmlFor="comment" color="white">Your message</FormLabel>
                 <Textarea
                   id="comment"
                   name="comment"
                   height={250}
                   {...formik.getFieldProps("comment")}
-                  borderColor="gray.400"
+                  borderColor="whiteAlpha.700"
+                  background="transparent"
+                  color="white"
+                  _placeholder={{ color: "whiteAlpha.700" }}
                 />
                 <FormErrorMessage>{formik.errors.comment}</FormErrorMessage>
               </FormControl>
@@ -116,11 +128,12 @@ const ContactMeSection = () => {
               {/* Submit Button */}
               <Button
                 type="submit"
-                colorScheme="purple"
                 width="full"
                 isLoading={isLoading}
-                _hover={{ bg: "purple.600" }}
-                _disabled={{ bg: "purple.300", cursor: "not-allowed" }}
+                backgroundColor="#9163E8"
+                color="white"
+                _hover={{ bg: "#A078EE" }}
+                _disabled={{ bg: "#9163E8", opacity: 0.6, cursor: "not-allowed" }}
               >
                 Submit
               </Button>
